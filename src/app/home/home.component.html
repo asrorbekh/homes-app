@@ -1,0 +1,13 @@
+<section>
+  <form (submit)="onSubmit($event)">
+    <input type="text" name="filter" id="filter" placeholder="Filter by city" #filter>
+    <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+  </form>
+</section>
+<section class="results">
+  @for (housingLocationList of filteredLocationList; track housingLocationList.id) {
+    <app-housing-location [housingLocation]="housingLocationList"></app-housing-location>
+  } @empty {
+    <div class="results">Not found</div>
+  }
+</section>
